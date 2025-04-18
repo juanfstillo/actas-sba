@@ -23,6 +23,10 @@ const obtenerActas = () => {
 onMounted(() => {
     obtenerActas(); // Llama la función cuando se monta el componente
 });
+
+defineProps({
+  auth: Object
+});
 </script>
 
 <template>
@@ -35,10 +39,11 @@ onMounted(() => {
         <div class="flex justify-between items-center">
           <h2 class="font-semibold text-xl text-gray-800 leading-tight">Actas</h2>
           <NavLink
+            v-if="auth.user?.rol === 1"
             :href="route('actas.create')"
-          >
-            Crear
-          </NavLink>
+            >
+          Crear
+        </NavLink>
         </div>
       </template>
   
