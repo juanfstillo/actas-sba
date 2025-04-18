@@ -1,22 +1,36 @@
 <script setup>
 import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout.vue';
 import { Head } from '@inertiajs/vue3';
+import { ref, onMounted } from 'vue';
+import TablaActas from '@/Components/TablaActas.vue'; // Importa el componente
+
+const actas = ref([]);
+
+// Simulamos el "fetch" de datos, puedes reemplazar esto por tu llamada a la API real
+const obtenerActas = () => {
+    // Simulando datos
+    actas.value = [
+        { id: 1, banco: 'Banco 1', anio: 2022, referencia: 'Acta 1', archivo: 'acta1.pdf' },
+        { id: 2, banco: 'Banco 2', anio: 2023, referencia: 'Acta 2', archivo: 'acta2.pdf' },
+        { id: 3, banco: 'Banco 1', anio: 2023, referencia: 'Acta 3', archivo: 'acta3.pdf' },
+        { id: 4, banco: 'Banco 3', anio: 2022, referencia: 'Acta 4', archivo: 'acta4.pdf' }
+    ];
+};
+
+onMounted(() => {
+    obtenerActas(); // Llama la función cuando se monta el componente
+});
 </script>
 
 <template>
-    <Head title="Dashboard" />
-
     <AuthenticatedLayout>
         <template #header>
-            <h2 class="font-semibold text-xl text-gray-800 leading-tight">Dashboard</h2>
+            <h2 class="font-semibold text-xl text-gray-800 leading-tight">Actas</h2>
         </template>
 
-        <div class="py-12">
-            <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-                <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
-                    <div class="p-6 text-gray-900">You're logged in!</div>
-                </div>
-            </div>
+        <div class="pt-2 max-w-7xl mx-auto sm:px-6 lg:px-8">
+            <!-- Usamos el componente de la tabla y le pasamos los datos de las actas -->
+            <TablaActas :actas="actas" />
         </div>
     </AuthenticatedLayout>
 </template>
