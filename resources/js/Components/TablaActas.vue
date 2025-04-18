@@ -95,7 +95,7 @@ const actasFiltradas = computed(() => {
 
 .btn-ver {
     display: inline-block;
-    background: #2ecc71;
+    background: #3072b8;
     color: white;
     padding: 0.4rem 0.8rem;
     text-decoration: none;
@@ -104,6 +104,6 @@ const actasFiltradas = computed(() => {
 }
 
 .btn-ver:hover {
-    background: #27ae60;
+    background: #229539;
 }
 </style>

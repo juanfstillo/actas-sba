@@ -48,7 +48,7 @@ const closeModal = () => {
             </p>
         </header>
 
-        <DangerButton @click="confirmUserDeletion">Delete Account</DangerButton>
+        <DangerButton @click="confirmUserDeletion">Borar Cuenta</DangerButton>
 
         <Modal :show="confirmingUserDeletion" @close="closeModal">
             <div class="p-6">

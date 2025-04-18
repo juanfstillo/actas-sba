@@ -3,6 +3,9 @@ import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout.vue';
 import { Head } from '@inertiajs/vue3';
 import { ref, onMounted } from 'vue';
 import TablaActas from '@/Components/TablaActas.vue'; // Importa el componente
+import { Link } from '@inertiajs/vue3'
+import NavLink from '@/Components/NavLink.vue';
+
 
 const actas = ref([]);
 
@@ -24,13 +27,24 @@ onMounted(() => {
 
 <template>
     <AuthenticatedLayout>
-        <template #header>
-            <h2 class="font-semibold text-xl text-gray-800 leading-tight">Actas</h2>
-        </template>
-
-        <div class="pt-2 max-w-7xl mx-auto sm:px-6 lg:px-8">
-            <!-- Usamos el componente de la tabla y le pasamos los datos de las actas -->
-            <TablaActas :actas="actas" />
+      <!-- <Head> DENTRO del layout -->
+      <Head title="Actas" />
+  
+      <!-- slot header -->
+      <template #header>
+        <div class="flex justify-between items-center">
+          <h2 class="font-semibold text-xl text-gray-800 leading-tight">Actas</h2>
+          <NavLink
+            :href="route('actas.create')"
+          >
+            Crear
+          </NavLink>
         </div>
+      </template>
+  
+      <!-- cuerpo de la página -->
+      <div class="pt-2 max-w-7xl mx-auto sm:px-6 lg:px-8">
+        <TablaActas :actas="actas" />
+      </div>
     </AuthenticatedLayout>
-</template>
+  </template>
